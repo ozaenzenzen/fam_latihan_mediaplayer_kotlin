@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
         btnStop.setOnClickListener {
             if (mMediaPlayer?.isPlaying as Boolean || isReady) {
                 mMediaPlayer?.stop()
@@ -41,8 +40,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         mMediaPlayer = MediaPlayer()
-        val attribute = AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_MEDIA)
-            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()
+        val attribute = AudioAttributes.Builder()
+            .setUsage(AudioAttributes.USAGE_MEDIA)
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .build()
         mMediaPlayer?.setAudioAttributes(attribute)
 
         val afd = applicationContext.resources.openRawResourceFd(R.raw.guitar_background)
